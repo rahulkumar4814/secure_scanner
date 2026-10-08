@@ -1,0 +1,8 @@
+# Used when SecureScan scans ITS OWN repository: the deliberately vulnerable demo app
+# contains fake secrets on purpose.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Intentionally vulnerable demo fixtures"
+paths = ['''samples/''', '''tests/fixtures/''']

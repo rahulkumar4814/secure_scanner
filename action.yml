@@ -1,0 +1,56 @@
+
+name: SecureScan AI
+description: Reusable SAST, SCA and secrets scanner
+
+inputs:
+  target:
+    description: Directory to scan
+    required: false
+    default: "."
+
+  fail-on:
+    description: Minimum severity to fail CI
+    required: false
+    default: "high"
+
+runs:
+  using: composite
+  steps:
+    - name: Install SecureScan
+      shell: bash
+      env:
+        ACTION_PATH: ${{ github.action_path }}
+      run: |
+        python -m pip install "$ACTION_PATH"
+        python -m pip install pip-audit
+    
+    - name: Install security scanners
+      shell: bash
+      run: |
+        # Install Semgrep separately to avoid
+        # dependency conflicts with FastAPI
+        python -m pip install pipx
+        python -m pipx install semgrep
+
+        # Install Trivy and Gitleaks via Go
+        go install github.com/aquasecurity/trivy/cmd/trivy@latest
+        go install github.com/gitleaks/gitleaks/v8@latest
+
+        # Make Go binaries available
+        echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+
+        # Verify installations
+        "$(go env GOPATH)/bin/trivy" --version
+        "$(go env GOPATH)/bin/gitleaks" version
+        python -m pipx runpip semgrep show semgrep
+
+    - name: Run SecureScan
+      shell: bash
+      env:
+        SCAN_TARGET: ${{ inputs.target }}
+        FAIL_ON: ${{ inputs.fail-on }}
+      run: |
+        securescan scan "$SCAN_TARGET" \
+          --no-llm \
+          --fail-on "$FAIL_ON" \
+          --out security-report.json

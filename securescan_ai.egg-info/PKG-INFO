@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: securescan-ai
+Version: 0.1.0
+Summary: AI-powered security scanner
+Requires-Python: >=3.12
+Requires-Dist: fastapi==0.142.2
+Requires-Dist: uvicorn[standard]==0.54.0
+Requires-Dist: pydantic==2.13.5
+Requires-Dist: pydantic-settings==2.15.0
+Requires-Dist: itsdangerous==2.2.0
+Requires-Dist: httpx==0.28.1
+Requires-Dist: langchain-core==1.6.6
+Requires-Dist: langchain-ollama==1.1.0
+Requires-Dist: langchain-text-splitters==1.1.3
+Requires-Dist: langgraph==1.2.12
+Requires-Dist: langgraph-checkpoint-sqlite==3.1.1
+Requires-Dist: rank-bm25==0.2.2
+Requires-Dist: reportlab==5.0.1
+Requires-Dist: pypdf==6.19.0
+Requires-Dist: pip-audit==2.10.1

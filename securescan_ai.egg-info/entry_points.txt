@@ -1,0 +1,2 @@
+[console_scripts]
+securescan = securescan.cli:main

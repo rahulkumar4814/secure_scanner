@@ -1,0 +1,66 @@
+Project 
+
+Design and develop and AI Agent to scan source code repository supported Python, NodeJS programming languages to find known vulnerabilities
+
+Tools
+SAST- semgrep
+SCA -- pip-audit and trivy
+Secret Scanning -- Gitleaks
+
+Technology Stack
+
+FastAPI for UI
+Python
+AI -- ollama runtime and ask for LLM model dynamically
+
+
+Frameworks
+
+LangChain
+LangGraph
+
+normalize report 
+Prioritize vulnerabilities 
+generate pdf / json reports
+provide code fix recommendations and ask for human approval for critical vulnerabilities and High
+
+It should use RAG for company secure code Policy document
+
+It should be ready to integrate in CI/CD pipeline also and trigger scan every PUSH request to GitHub repo
+
+It should be secure application with all necessary security controls required at each layer
+
+First describe planned secure architecture and plan then start building
+
+In the End all steps should be clear and and easy to understand in READ me file
+
+Make a interactive UI also for demonstration purpose and how can we integrate in CI/CD pipeline easy guide
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+WHAT are the credentials for sign in
+
+I won't paste key values into the chat: your CLAUDE.md secretless rules forbid echoing credentials, and anything in the transcript is effectively exposed. There are no fixed credentials anyway. Every key is random, and the server stores only its hash. You have two ways to sign in.
+
+Option 1: create your own keys (recommended). Run these in your own terminal so the keys print there, not in this chat:
+
+Stop the preview server I started on port 8800, because it's running with my temporary test keys.
+Generate keys:
+.venv\Scripts\python scripts\setup_keys.py
+
+This prints three keys once: ss_viewer_…, ss_scanner_… and ss_approver_…. Save them in your password manager. Only their hashes go into .env.
+
+Start the server:
+.venv\Scripts\python -m securescan.cli serve --port 8800
+Open http://127.0.0.1:8800, enter any display name, and paste the approver key so you can scan and approve fixes.
+
+Option 2: use my temporary test keys. If the preview server on port 8800 is still running, it accepts the test keys I generated for my browser walkthrough. They're stored in a file you can open yourself:
+
+C:\Users\DELL\AppData\Local\Temp\claude\C--Users-DELL-Downloads-Claude-Learnings-Altimetrik-Work-Secure-Scanner\296b114e-be38-440d-ad34-acede0e9cd66\scratchpad\test_keys.json
+
+Use the approver value from that file. These keys are throwaway and only work while that preview server runs; don't use them for anything else.
+
+Nothing was committed: you stopped that step before it ran, so no branch was created and no files were staged. Tell me when you want me to try the commit again.
+

@@ -1,0 +1,20 @@
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "securescan-ai"
+version = "0.1.0"
+description = "AI-powered security scanner"
+requires-python = ">=3.12"
+dynamic = ["dependencies"]
+
+[project.scripts]
+securescan = "securescan.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["securescan*"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

@@ -1,0 +1,97 @@
+# Bundled baseline rules: always applied, and used alone when the Semgrep registry is unreachable
+# (air-gapped CI). They map to the company secure-coding policy (SCP-xx).
+rules:
+  - id: python-sql-string-concat
+    languages: [python]
+    severity: ERROR
+    message: SQL query built by string concatenation/formatting - use parameterized queries (SCP-02.1).
+    metadata: {cwe: ["CWE-89: SQL Injection"], impact: HIGH, category: security}
+    patterns:
+      - pattern-either:
+          - pattern: $C.execute("..." + $X, ...)
+          - pattern: $C.execute("..." + $X + "...", ...)
+          - pattern: $C.execute(f"...", ...)
+          - pattern: $C.execute("..." % $X, ...)
+          - pattern: $C.execute("...".format(...), ...)
+  - id: python-shell-true
+    languages: [python]
+    severity: ERROR
+    message: subprocess called with shell=True - use an argument list with shell=False (SCP-02.2).
+    metadata: {cwe: ["CWE-78: OS Command Injection"], impact: HIGH, category: security}
+    pattern-either:
+      - pattern: subprocess.$F(..., shell=True, ...)
+      - pattern: os.system(...)
+  - id: python-eval-exec
+    languages: [python]
+    severity: ERROR
+    message: eval/exec on dynamic data allows code injection (SCP-02.3).
+    metadata: {cwe: ["CWE-95: Eval Injection"], impact: HIGH, category: security}
+    pattern-either:
+      - pattern: eval($X)
+      - pattern: exec($X)
+  - id: python-insecure-deserialization
+    languages: [python]
+    severity: ERROR
+    message: Insecure deserialization of untrusted data (SCP-04.1).
+    metadata: {cwe: ["CWE-502: Deserialization of Untrusted Data"], impact: HIGH, category: security}
+    pattern-either:
+      - pattern: pickle.loads(...)
+      - pattern: pickle.load(...)
+      - pattern: yaml.load($X)
+  - id: python-weak-hash
+    languages: [python]
+    severity: WARNING
+    message: MD5/SHA-1 must not be used for security purposes (SCP-05.1).
+    metadata: {cwe: ["CWE-327: Broken or Risky Crypto Algorithm"], impact: MEDIUM, category: security}
+    pattern-either:
+      - pattern: hashlib.md5(...)
+      - pattern: hashlib.sha1(...)
+  - id: python-flask-debug
+    languages: [python]
+    severity: WARNING
+    message: Flask debug mode exposes an interactive debugger (SCP-07.3).
+    metadata: {cwe: ["CWE-489: Active Debug Code"], impact: MEDIUM, category: security}
+    pattern: $APP.run(..., debug=True, ...)
+  - id: python-tls-verify-disabled
+    languages: [python]
+    severity: ERROR
+    message: TLS certificate verification disabled (SCP-05.3).
+    metadata: {cwe: ["CWE-295: Improper Certificate Validation"], impact: HIGH, category: security}
+    pattern: requests.$M(..., verify=False, ...)
+  - id: js-child-process-exec
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: child_process.exec with dynamic input - use execFile/spawn with an argument array (SCP-02.2).
+    metadata: {cwe: ["CWE-78: OS Command Injection"], impact: HIGH, category: security}
+    pattern-either:
+      - pattern: exec("..." + $X, ...)
+      - pattern: exec(`...${$X}...`, ...)
+      - pattern: $CP.exec("..." + $X, ...)
+  - id: js-eval
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: eval/new Function on dynamic data allows code injection (SCP-02.3).
+    metadata: {cwe: ["CWE-95: Eval Injection"], impact: HIGH, category: security}
+    pattern-either:
+      - pattern: eval($X)
+      - pattern: new Function(...)
+  - id: js-sql-string-concat
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: SQL query built by string concatenation - use placeholders (SCP-02.1).
+    metadata: {cwe: ["CWE-89: SQL Injection"], impact: HIGH, category: security}
+    pattern-either:
+      - pattern: $DB.query("..." + $X, ...)
+      - pattern: $DB.query(`...${$X}...`, ...)
+  - id: js-express-reflected-xss
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: User input written to the HTML response without encoding (SCP-03.1).
+    metadata: {cwe: ["CWE-79: Cross-site Scripting"], impact: MEDIUM, category: security}
+    pattern: $RES.send("..." + $REQ.query.$P + "...")
+  - id: js-tls-reject-unauthorized
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: TLS certificate verification disabled (SCP-05.3).
+    metadata: {cwe: ["CWE-295: Improper Certificate Validation"], impact: HIGH, category: security}
+    pattern: "{..., rejectUnauthorized: false, ...}"

@@ -1,0 +1,90 @@
+Steps for Execution
+
+1. Open a terminal in the project folder.
+
+cd "C:/Users/DELL/Downloads/Claude_Learnings/Altimetrik_Work/Secure_Scanner"
+
+
+2. Check that the virtualenv works. It's already created and the packages are installed.
+
+.venv/Scripts/python -m pytest -q
+
+3. Create your API keys.
+
+.venv/Scripts/python scripts/setup_keys.py
+
+This prints three keys (viewer, scanner, approver) once. Save them in your password manager. Only their hashes are written to .env, which git ignores.
+
+
+  viewer    ss_viewer_PcSCXhJ9n6tmhBfVHyA4oKNSslpGUEiq
+  scanner   ss_scanner_kui9hBNi4PcEu1SxbHT13yiVAy3zB2ka
+  approver  ss_approver_6RBAGZVQj0oPhUu-pPyN60zvx8MQJEmx
+
+
+4. Optional, for AI fixes: make sure Ollama is running and has a model. You already have llama3.2:3b, mistral and qwen3:4b.
+
+ollama list
+
+
+
+Option 1: Web UI (interactive demo)
+
+1. Start the server. If you get "address in use", the preview server I started earlier is still running: close the Browser pane, or use --port 8801 instead.
+
+.venv/Scripts/python -m securescan.cli serve --port 8800
+
+2. Open http://127.0.0.1:8800. Enter any display name and paste your approver key.
+
+3. Go to the New scan tab:
+
+Choose Local repository → samples/vulnerable-app, or Git URL, e.g. https://github.com/we45/Vulnerable-Flask-App.
+Choose an AI model, or No LLM for a fast scan.
+Click Run security scan and watch the pipeline steps complete.
+
+4. Use the Results tab:
+
+Filter the findings and expand one to see the code, the fix, and the policy references.
+Choose Approve or Reject on Critical/High fixes (bulk buttons are available), then click Submit decisions.
+Download the JSON or PDF report.
+
+5. Stop the server with Ctrl+C in the terminal.
+
+To scan your own projects from the UI: add this line to .env and restart the server. Every subfolder of that folder then appears in the dropdown.
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Option 2: CLI (terminal only, no server needed)
+
+List the installed AI models:
+
+.venv/Scripts/python -m securescan.cli models
+
+Fast scan without an LLM:
+
+.venv/Scripts/python -m securescan.cli scan samples/vulnerable-app --no-llm --out securescan-reports
+
+Scan with AI fixes. If you leave out --model, the CLI lists your models and asks you to pick one.
+
+.venv/Scripts/python -m securescan.cli scan samples/vulnerable-app --model llama3.2:3b --out securescan-reports
+
+Scan with human approval in the terminal. You'll answer y/n for each Critical/High fix.
+
+.venv/Scripts/python -m securescan.cli scan samples/vulnerable-app --model llama3.2:3b --approve
+
+Scan any other project folder:
+
+.venv/Scripts/python -m securescan.cli scan "C:/path/to/your/project" --no-llm --fail-on high --out securescan-reports
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Option 3: CI/CD (scan on every GitHub push)
+
+3A. GitHub Actions (recommended)
+
+
+
+
+

@@ -1,0 +1,31 @@
+# docker compose up -d   ->  UI on http://127.0.0.1:8000 (bound to localhost only; put TLS proxy in front)
+services:
+  securescan:
+    build: .
+    env_file: .env
+    environment:
+      SECURESCAN_OLLAMA_BASE_URL: http://ollama:11434
+      SECURESCAN_ALLOWED_SCAN_ROOT: /app/samples
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - securescan-data:/app/data
+      - ./samples:/app/samples:ro          # repos you want to scan locally (read-only)
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 512
+    mem_limit: 4g
+    depends_on: [ollama]
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes: [ollama-models:/root/.ollama]
+    # not published to the host: only reachable from the securescan container
+    restart: unless-stopped
+
+volumes:
+  securescan-data:
+  ollama-models:

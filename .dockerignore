@@ -1,0 +1,9 @@
+.venv
+.git
+data
+.env
+.env.*
+!.env.example
+**/__pycache__
+securescan-reports
+.claude

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SecureScan AI</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 4 7v8c0 7.5 5 13.5 12 15 7-1.5 12-7.5 12-15V7z' fill='%234f46e5'/%3E%3C/svg%3E">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 4 7v8c0 7.5 5 13.5 12 15 7-1.5 12-7.5 12-15V7z"/><path class="tick" d="m11 16 4 4 7-8"/></svg>
+    <span>SecureScan <b>AI</b></span>
+  </div>
+  <nav id="nav" class="hidden">
+    <button data-view="scan" class="active">New scan</button>
+    <button data-view="history">Scans</button>
+    <button data-view="results" id="nav-results" disabled>Results</button>
+    <button data-view="cicd">CI/CD guide</button>
+    <button data-view="arch">How it works</button>
+  </nav>
+  <div id="who" class="who hidden"><span id="who-name"></span><button id="logout" class="ghost">Sign out</button></div>
+</header>
+
+<main>
+  <!-- Login -->
+  <section id="view-login" class="view card narrow">
+    <h1>Sign in</h1>
+    <p class="muted">Enter your SecureScan API key. Your role (viewer, scanner or approver) comes from the key.
+      The browser gets an HttpOnly session cookie. The key itself is never stored in the browser.</p>
+    <form id="login-form" autocomplete="off">
+      <label>Display name <input id="login-name" maxlength="60" placeholder="e.g. Alice"></label>
+      <label>API key <input id="login-key" type="password" required minlength="8" maxlength="256"></label>
+      <button type="submit" class="primary">Sign in</button>
+      <p id="login-error" class="error" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- New scan -->
+  <section id="view-scan" class="view hidden">
+    <div class="grid2">
+      <div class="card">
+        <h2>Start a scan</h2>
+        <form id="scan-form">
+          <fieldset class="seg">
+            <legend>Source</legend>
+            <label><input type="radio" name="src" value="local" checked> Local repository</label>
+            <label><input type="radio" name="src" value="git"> Git URL</label>
+          </fieldset>
+          <label id="local-wrap">Repository (inside the allowed scan root)
+            <select id="local-target"></select>
+          </label>
+          <label id="git-wrap" class="hidden">HTTPS git URL
+            <input id="git-url" placeholder="https://github.com/owner/repo" maxlength="500">
+          </label>
+          <label id="ref-wrap" class="hidden">Branch / tag (optional)
+            <input id="git-ref" placeholder="main" maxlength="200">
+          </label>
+          <label>AI model (Ollama, detected at runtime)
+            <select id="model"></select>
+          </label>
+          <button type="submit" class="primary" id="scan-btn">Run security scan</button>
+          <p id="scan-error" class="error" role="alert"></p>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Environment</h2>
+        <ul id="env" class="env"></ul>
+        <h3>Agent pipeline</h3>
+        <ol id="pipeline" class="pipeline"></ol>
+        <p id="progress-text" class="muted"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- History -->
+  <section id="view-history" class="view hidden card">
+    <div class="row-between"><h2>Scan history</h2><button id="refresh-history" class="ghost">Refresh</button></div>
+    <table class="table"><thead><tr><th>When</th><th>Target</th><th>Status</th><th>Critical</th><th>High</th><th>Medium</th><th>Pending approvals</th><th>By</th></tr></thead>
+      <tbody id="history-body"></tbody></table>
+  </section>
+
+  <!-- Results -->
+  <section id="view-results" class="view hidden">
+    <div class="card">
+      <div class="row-between">
+        <div>
+          <h2 id="res-title">Results</h2>
+          <p id="res-meta" class="muted"></p>
+        </div>
+        <div class="actions">
+          <a id="dl-json" class="btn ghost" download>JSON report</a>
+          <a id="dl-pdf" class="btn ghost" download>PDF report</a>
+        </div>
+      </div>
+      <div id="stats" class="stats"></div>
+      <div class="grid2 tight">
+        <div><h3>By category</h3><div id="chart-cat" class="bars"></div></div>
+        <div><h3>Scanners</h3><div id="tools" class="tools"></div></div>
+      </div>
+    </div>
+
+    <div id="approval-banner" class="card banner hidden">
+      <div>
+        <h3>Human approval required</h3>
+        <p id="approval-text"></p>
+      </div>
+      <div class="actions" id="approval-actions">
+        <button id="approve-all" class="ghost">Select all shown: approve</button>
+        <button id="reject-all" class="ghost">Select all shown: reject</button>
+        <button id="submit-approvals" class="primary">Submit decisions</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row-between filters">
+        <h2>Prioritized findings</h2>
+        <div class="filter-row">
+          <select id="f-prio"><option value="">All priorities</option><option>CRITICAL</option><option>HIGH</option><option>MEDIUM</option><option>LOW</option></select>
+          <select id="f-cat"><option value="">All categories</option><option>SAST</option><option>SCA</option><option>SECRET</option></select>
+          <select id="f-appr"><option value="">Any approval</option><option value="pending_approval">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select>
+          <input id="f-text" placeholder="Search..." maxlength="80">
+        </div>
+      </div>
+      <div id="findings"></div>
+    </div>
+  </section>
+
+  <!-- CI/CD guide -->
+  <section id="view-cicd" class="view hidden">
+    <div class="card prose">
+      <h2>Add SecureScan AI to your CI/CD pipeline</h2>
+      <p>There are two ways to run a scan on every <code>push</code> to GitHub. Use one or both.</p>
+      <div class="grid2 tight">
+        <div class="option"><h3>A. GitHub Actions (recommended)</h3><p>The scan runs on the GitHub runner. The build fails on Critical findings, a SARIF file feeds the Security tab, and the PDF/JSON reports are uploaded as artifacts.</p></div>
+        <div class="option"><h3>B. Webhook to this server</h3><p>GitHub calls <code>/api/webhook/github</code> on every push. The server clones and scans the repo, and approvers review Critical/High fixes in this UI.</p></div>
+      </div>
+      <h3>Option A - 4 steps</h3>
+      <ol class="steps">
+        <li><b>Copy the workflow.</b> Put <code>.github/workflows/securescan.yml</code> from this project into your repository.</li>
+        <li><b>Point it at SecureScan.</b> Set <code>SECURESCAN_REPO</code> (repository variable) to the git URL of this SecureScan project, or vendor it as a folder.</li>
+        <li><b>Optional AI fixes.</b> Set the repository variable <code>SECURESCAN_MODEL</code> (e.g. <code>llama3.2:3b</code>). The workflow then starts Ollama on the runner. Leave it empty for the fast, deterministic policy-based fixes.</li>
+        <li><b>Push.</b> Every push runs the scan. The <code>--fail-on</code> threshold controls when the build breaks.</li>
+      </ol>
+      <pre class="code" id="yaml-snippet"></pre>
+      <h3>Option B - webhook in 3 steps</h3>
+      <ol class="steps">
+        <li>Generate a secret: <code>python -c "import secrets;print(secrets.token_hex(32))"</code> and set it as <code>SECURESCAN_GITHUB_WEBHOOK_SECRET</code> on the server.</li>
+        <li>GitHub → repo → <i>Settings → Webhooks → Add webhook</i>. Payload URL: <code>https://&lt;your-host&gt;/api/webhook/github</code>, content type <code>application/json</code>, the same secret, event <i>Just the push event</i>.</li>
+        <li>Push a commit. The scan appears under <b>Scans</b>, and approvers decide on Critical/High fixes in <b>Results</b>.</li>
+      </ol>
+      <h3>Other CI systems (GitLab, Jenkins, Azure DevOps)</h3>
+      <pre class="code">pip install -r requirements.txt
+python -m securescan.cli scan . --no-llm --fail-on critical --out securescan-reports
+# exit code 1 = findings at/above threshold -> pipeline fails
+# artifacts: securescan-reports/securescan-report.{json,pdf,sarif}, securescan-summary.md</pre>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section id="view-arch" class="view hidden">
+    <div class="card prose">
+      <h2>How SecureScan AI works</h2>
+      <p>A LangGraph agent runs the scan as a state machine. Each step is checkpointed in SQLite, so a scan can pause and wait for a human approver, even across a server restart.</p>
+      <ol class="pipeline big" id="arch-pipeline"></ol>
+      <h3>Security controls by layer</h3>
+      <table class="table"><thead><tr><th>Layer</th><th>Controls</th></tr></thead><tbody id="controls"></tbody></table>
+    </div>
+  </section>
+</main>
+
+<template id="finding-tpl">
+  <details class="finding">
+    <summary>
+      <span class="sev"></span>
+      <span class="risk"></span>
+      <span class="cat"></span>
+      <span class="title"></span>
+      <span class="loc"></span>
+      <span class="appr"></span>
+    </summary>
+    <div class="body">
+      <p class="desc"></p>
+      <p class="facts muted"></p>
+      <pre class="code snippet"></pre>
+      <div class="fix">
+        <h4>Recommended fix <span class="fix-src"></span></h4>
+        <p class="fix-summary"></p>
+        <pre class="code fix-code"></pre>
+        <p class="policy muted"></p>
+        <div class="decide hidden">
+          <label class="radio"><input type="radio" value="approve"> Approve</label>
+          <label class="radio"><input type="radio" value="reject"> Reject</label>
+          <input class="comment" maxlength="500" placeholder="Comment (optional)">
+        </div>
+        <p class="decided muted"></p>
+      </div>
+    </div>
+  </details>
+</template>
+</body>
+</html>

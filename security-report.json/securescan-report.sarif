@@ -1,0 +1,2692 @@
+{
+ "version": "2.1.0",
+ "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+ "runs": [
+  {
+   "tool": {
+    "driver": {
+     "name": "SecureScan AI",
+     "informationUri": "https://example.com/securescan",
+     "rules": [
+      {
+       "id": "gitleaks/generic-api-key",
+       "name": "generic-api-key",
+       "shortDescription": {
+        "text": "Hard-coded secret (generic-api-key)"
+       },
+       "properties": {
+        "tags": [
+         "SECRET",
+         "CWE-798"
+        ],
+        "security-severity": "10.0"
+       }
+      },
+      {
+       "id": "gitleaks/aws-access-token",
+       "name": "aws-access-token",
+       "shortDescription": {
+        "text": "Hard-coded secret (aws-access-token)"
+       },
+       "properties": {
+        "tags": [
+         "SECRET",
+         "CWE-798"
+        ],
+        "security-severity": "10.0"
+       }
+      },
+      {
+       "id": "trivy/CVE-2026-4800",
+       "name": "CVE-2026-4800",
+       "shortDescription": {
+        "text": "lodash: lodash: Arbitrary code execution via untrusted input in template imports"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-94"
+        ],
+        "security-severity": "9.9"
+       }
+      },
+      {
+       "id": "trivy/CVE-2021-44906",
+       "name": "CVE-2021-44906",
+       "shortDescription": {
+        "text": "minimist: prototype pollution"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-1321"
+        ],
+        "security-severity": "9.9"
+       }
+      },
+      {
+       "id": "trivy/CVE-2020-14343",
+       "name": "CVE-2020-14343",
+       "shortDescription": {
+        "text": "PyYAML: incomplete fix for CVE-2020-1747"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-20"
+        ],
+        "security-severity": "9.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2020-1747",
+       "name": "CVE-2020-1747",
+       "shortDescription": {
+        "text": "PyYAML: arbitrary command execution through python/object/new when FullLoader is used"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-20"
+        ],
+        "security-severity": "9.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2019-10906",
+       "name": "CVE-2019-10906",
+       "shortDescription": {
+        "text": "python-jinja2: str.format_map allows sandbox escape"
+       },
+       "properties": {
+        "tags": [
+         "SCA"
+        ],
+        "security-severity": "8.8"
+       }
+      },
+      {
+       "id": "trivy/CVE-2025-66418",
+       "name": "CVE-2025-66418",
+       "shortDescription": {
+        "text": "urllib3: urllib3: Unbounded decompression chain leads to resource exhaustion"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-770"
+        ],
+        "security-severity": "8.7"
+       }
+      },
+      {
+       "id": "trivy/CVE-2025-66471",
+       "name": "CVE-2025-66471",
+       "shortDescription": {
+        "text": "urllib3: urllib3 Streaming API improperly handles highly compressed data"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-409"
+        ],
+        "security-severity": "8.7"
+       }
+      },
+      {
+       "id": "trivy/CVE-2026-97689",
+       "name": "CVE-2026-97689",
+       "shortDescription": {
+        "text": "urllib3: urllib3: Denial of Service via unbounded memory allocation in chunk parser"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-770"
+        ],
+        "security-severity": "8.7"
+       }
+      },
+      {
+       "id": "trivy/CVE-2025-27516",
+       "name": "CVE-2025-27516",
+       "shortDescription": {
+        "text": "jinja2: Jinja sandbox breakout through attr filter selecting format method"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-1336"
+        ],
+        "security-severity": "8.6"
+       }
+      },
+      {
+       "id": "trivy/CVE-2025-13465",
+       "name": "CVE-2025-13465",
+       "shortDescription": {
+        "text": "lodash: prototype pollution in _.unset and _.omit functions"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-1321"
+        ],
+        "security-severity": "8.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2023-43804",
+       "name": "CVE-2023-43804",
+       "shortDescription": {
+        "text": "python-urllib3: Cookie request header isn't stripped during cross-origin redirects"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-200"
+        ],
+        "security-severity": "8.0"
+       }
+      },
+      {
+       "id": "trivy/CVE-2022-23540",
+       "name": "CVE-2022-23540",
+       "shortDescription": {
+        "text": "jsonwebtoken: Insecure default algorithm in jwt.verify() could lead to signature validation bypass"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-287",
+         "CWE-347"
+        ],
+        "security-severity": "7.9"
+       }
+      },
+      {
+       "id": "trivy/CVE-2020-8203",
+       "name": "CVE-2020-8203",
+       "shortDescription": {
+        "text": "nodejs-lodash: prototype pollution in zipObjectDeep function"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-770",
+         "CWE-1321"
+        ],
+        "security-severity": "7.8"
+       }
+      },
+      {
+       "id": "trivy/CVE-2024-56326",
+       "name": "CVE-2024-56326",
+       "shortDescription": {
+        "text": "jinja2: Jinja has a sandbox breakout through indirect reference to format method"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-1336",
+         "CWE-693"
+        ],
+        "security-severity": "7.7"
+       }
+      },
+      {
+       "id": "trivy/CVE-2022-23539",
+       "name": "CVE-2022-23539",
+       "shortDescription": {
+        "text": "jsonwebtoken: Unrestricted key type could lead to legacy keys usagen"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-327"
+        ],
+        "security-severity": "7.6"
+       }
+      },
+      {
+       "id": "trivy/CVE-2021-23337",
+       "name": "CVE-2021-23337",
+       "shortDescription": {
+        "text": "nodejs-lodash: command injection via template"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-94"
+        ],
+        "security-severity": "7.6"
+       }
+      },
+      {
+       "id": "trivy/CVE-2018-1000656",
+       "name": "CVE-2018-1000656",
+       "shortDescription": {
+        "text": "python-flask: Denial of Service via crafted JSON file"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-20"
+        ],
+        "security-severity": "7.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2019-1010083",
+       "name": "CVE-2019-1010083",
+       "shortDescription": {
+        "text": "python-flask: unexpected memory usage can lead to denial of service via crafted encoded JSON data"
+       },
+       "properties": {
+        "tags": [
+         "SCA"
+        ],
+        "security-severity": "7.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2023-30861",
+       "name": "CVE-2023-30861",
+       "shortDescription": {
+        "text": "flask: Possible disclosure of permanent session cookie due to missing Vary: Cookie header"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-539"
+        ],
+        "security-severity": "7.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2020-28493",
+       "name": "CVE-2020-28493",
+       "shortDescription": {
+        "text": "python-jinja2: ReDoS vulnerability in the urlize filter"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-400"
+        ],
+        "security-severity": "7.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2018-18074",
+       "name": "CVE-2018-18074",
+       "shortDescription": {
+        "text": "python-requests: Redirect from HTTPS to HTTP does not remove Authorization header"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-522"
+        ],
+        "security-severity": "7.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2019-11324",
+       "name": "CVE-2019-11324",
+       "shortDescription": {
+        "text": "python-urllib3: Certification mishandle when error should be thrown"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-295"
+        ],
+        "security-severity": "7.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2026-21441",
+       "name": "CVE-2026-21441",
+       "shortDescription": {
+        "text": "urllib3: urllib3 vulnerable to decompression-bomb safeguard bypass when following HTTP redirects (streaming API)"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-409"
+        ],
+        "security-severity": "7.5"
+       }
+      },
+      {
+       "id": "semgrep/securescan.js-sql-string-concat",
+       "name": "securescan.js-sql-string-concat",
+       "shortDescription": {
+        "text": "Js sql string concat"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-89"
+        ],
+        "security-severity": "7.3"
+       }
+      },
+      {
+       "id": "semgrep/securescan.js-child-process-exec",
+       "name": "securescan.js-child-process-exec",
+       "shortDescription": {
+        "text": "Js child process exec"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-78"
+        ],
+        "security-severity": "7.3"
+       }
+      },
+      {
+       "id": "semgrep/javascript.lang.security.audit.code-string-concat.code-string-concat",
+       "name": "javascript.lang.security.audit.code-string-concat.code-string-concat",
+       "shortDescription": {
+        "text": "Code string concat"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-95"
+        ],
+        "security-severity": "7.3"
+       }
+      },
+      {
+       "id": "semgrep/securescan.python-sql-string-concat",
+       "name": "securescan.python-sql-string-concat",
+       "shortDescription": {
+        "text": "Python sql string concat"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-89"
+        ],
+        "security-severity": "7.3"
+       }
+      },
+      {
+       "id": "semgrep/python.flask.security.injection.subprocess-injection.subprocess-injection",
+       "name": "python.flask.security.injection.subprocess-injection.subprocess-injection",
+       "shortDescription": {
+        "text": "Subprocess injection"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-78"
+        ],
+        "security-severity": "7.3"
+       }
+      },
+      {
+       "id": "semgrep/securescan.python-insecure-deserialization",
+       "name": "securescan.python-insecure-deserialization",
+       "shortDescription": {
+        "text": "Python insecure deserialization"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-502"
+        ],
+        "security-severity": "7.3"
+       }
+      },
+      {
+       "id": "semgrep/python.django.security.injection.code.user-eval.user-eval",
+       "name": "python.django.security.injection.code.user-eval.user-eval",
+       "shortDescription": {
+        "text": "User eval"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-95"
+        ],
+        "security-severity": "7.3"
+       }
+      },
+      {
+       "id": "trivy/CVE-2024-22195",
+       "name": "CVE-2024-22195",
+       "shortDescription": {
+        "text": "jinja2: HTML attribute injection when passing user input as keys to xmlattr filter"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-79"
+        ],
+        "security-severity": "7.0"
+       }
+      },
+      {
+       "id": "trivy/CVE-2026-2950",
+       "name": "CVE-2026-2950",
+       "shortDescription": {
+        "text": "lodash: Lodash: Prototype pollution allows deletion of built-in prototype properties via array path bypass"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-1321"
+        ],
+        "security-severity": "7.0"
+       }
+      },
+      {
+       "id": "trivy/CVE-2022-23541",
+       "name": "CVE-2022-23541",
+       "shortDescription": {
+        "text": "jsonwebtoken: Insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-287",
+         "CWE-1259"
+        ],
+        "security-severity": "6.8"
+       }
+      },
+      {
+       "id": "trivy/CVE-2026-44431",
+       "name": "CVE-2026-44431",
+       "shortDescription": {
+        "text": "urllib3: urllib3: Information disclosure via cross-origin redirects forwarding sensitive headers"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-200"
+        ],
+        "security-severity": "6.7"
+       }
+      },
+      {
+       "id": "trivy/CVE-2019-11236",
+       "name": "CVE-2019-11236",
+       "shortDescription": {
+        "text": "python-urllib3: CRLF injection due to not encoding the '\\r\\n' sequence leading to possible attack on internal service"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-93"
+        ],
+        "security-severity": "6.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2020-26137",
+       "name": "CVE-2020-26137",
+       "shortDescription": {
+        "text": "python-urllib3: CRLF injection via HTTP request method"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-74"
+        ],
+        "security-severity": "6.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2024-37891",
+       "name": "CVE-2024-37891",
+       "shortDescription": {
+        "text": "urllib3: proxy-authorization request header is not stripped during cross-origin redirects"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-669"
+        ],
+        "security-severity": "6.5"
+       }
+      },
+      {
+       "id": "semgrep/yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+       "name": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+       "shortDescription": {
+        "text": "Github actions mutable action tag"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-1357",
+         "CWE-353"
+        ],
+        "security-severity": "6.5"
+       }
+      },
+      {
+       "id": "semgrep/ajinabraham.njsscan.generic.hardcoded_secrets.node_secret",
+       "name": "ajinabraham.njsscan.generic.hardcoded_secrets.node_secret",
+       "shortDescription": {
+        "text": "Node_secret"
+       },
+       "properties": {
+        "tags": [
+         "SAST"
+        ],
+        "security-severity": "6.5"
+       }
+      },
+      {
+       "id": "semgrep/ajinabraham.njsscan.database.sql_injection.node_sqli_injection",
+       "name": "ajinabraham.njsscan.database.sql_injection.node_sqli_injection",
+       "shortDescription": {
+        "text": "Node_sqli_injection"
+       },
+       "properties": {
+        "tags": [
+         "SAST"
+        ],
+        "security-severity": "6.5"
+       }
+      },
+      {
+       "id": "semgrep/ajinabraham.njsscan.exec.exec_os_command.generic_os_command_exec",
+       "name": "ajinabraham.njsscan.exec.exec_os_command.generic_os_command_exec",
+       "shortDescription": {
+        "text": "Generic_os_command_exec"
+       },
+       "properties": {
+        "tags": [
+         "SAST"
+        ],
+        "security-severity": "6.5"
+       }
+      },
+      {
+       "id": "semgrep/ajinabraham.njsscan.xss.xss_node.express_xss",
+       "name": "ajinabraham.njsscan.xss.xss_node.express_xss",
+       "shortDescription": {
+        "text": "Express_xss"
+       },
+       "properties": {
+        "tags": [
+         "SAST"
+        ],
+        "security-severity": "6.5"
+       }
+      },
+      {
+       "id": "semgrep/ajinabraham.njsscan.eval.eval_node.eval_nodejs",
+       "name": "ajinabraham.njsscan.eval.eval_node.eval_nodejs",
+       "shortDescription": {
+        "text": "Eval_nodejs"
+       },
+       "properties": {
+        "tags": [
+         "SAST"
+        ],
+        "security-severity": "6.5"
+       }
+      },
+      {
+       "id": "trivy/CVE-2024-34064",
+       "name": "CVE-2024-34064",
+       "shortDescription": {
+        "text": "jinja2: accepts keys containing non-attribute characters"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-79"
+        ],
+        "security-severity": "6.4"
+       }
+      },
+      {
+       "id": "trivy/NSWG-ECO-516",
+       "name": "NSWG-ECO-516",
+       "shortDescription": {
+        "text": "Allocation of Resources Without Limits or Throttling"
+       },
+       "properties": {
+        "tags": [
+         "SCA"
+        ],
+        "security-severity": "6.3"
+       }
+      },
+      {
+       "id": "trivy/CVE-2023-32681",
+       "name": "CVE-2023-32681",
+       "shortDescription": {
+        "text": "python-requests: Unintended leak of Proxy-Authorization header"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-200"
+        ],
+        "security-severity": "6.2"
+       }
+      },
+      {
+       "id": "trivy/CVE-2018-25091",
+       "name": "CVE-2018-25091",
+       "shortDescription": {
+        "text": "urllib3: urllib3 does not remove the authorization HTTP header when following a cross-origin redirect"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-601"
+        ],
+        "security-severity": "6.2"
+       }
+      },
+      {
+       "id": "trivy/CVE-2025-50181",
+       "name": "CVE-2025-50181",
+       "shortDescription": {
+        "text": "urllib3: urllib3 redirects are not disabled when retries are disabled on PoolManager instantiation"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-601"
+        ],
+        "security-severity": "6.2"
+       }
+      },
+      {
+       "id": "trivy/CVE-2020-7598",
+       "name": "CVE-2020-7598",
+       "shortDescription": {
+        "text": "nodejs-minimist: prototype pollution allows adding or modifying properties of Object.prototype using a constructor or __proto__ payload"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-1321"
+        ],
+        "security-severity": "6.1"
+       }
+      },
+      {
+       "id": "trivy/CVE-2024-29041",
+       "name": "CVE-2024-29041",
+       "shortDescription": {
+        "text": "express: cause malformed URLs to be evaluated"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-601",
+         "CWE-1286"
+        ],
+        "security-severity": "5.8"
+       }
+      },
+      {
+       "id": "trivy/CVE-2024-35195",
+       "name": "CVE-2024-35195",
+       "shortDescription": {
+        "text": "requests: subsequent requests to the same host ignore cert verification"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-670"
+        ],
+        "security-severity": "5.7"
+       }
+      },
+      {
+       "id": "trivy/CVE-2026-25645",
+       "name": "CVE-2026-25645",
+       "shortDescription": {
+        "text": "requests: Requests: Security bypass due to predictable temporary file creation"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-377"
+        ],
+        "security-severity": "5.7"
+       }
+      },
+      {
+       "id": "trivy/CVE-2024-43796",
+       "name": "CVE-2024-43796",
+       "shortDescription": {
+        "text": "express: Improper Input Handling in Express Redirects"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-79"
+        ],
+        "security-severity": "5.6"
+       }
+      },
+      {
+       "id": "trivy/CVE-2024-47081",
+       "name": "CVE-2024-47081",
+       "shortDescription": {
+        "text": "requests: Requests vulnerable to .netrc credentials leak via malicious URLs"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-522"
+        ],
+        "security-severity": "5.5"
+       }
+      },
+      {
+       "id": "semgrep/javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+       "name": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+       "shortDescription": {
+        "text": "Direct response write"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-79"
+        ],
+        "security-severity": "5.3"
+       }
+      },
+      {
+       "id": "semgrep/securescan.js-express-reflected-xss",
+       "name": "securescan.js-express-reflected-xss",
+       "shortDescription": {
+        "text": "Js express reflected xss"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-79"
+        ],
+        "security-severity": "5.3"
+       }
+      },
+      {
+       "id": "trivy/CVE-2020-28500",
+       "name": "CVE-2020-28500",
+       "shortDescription": {
+        "text": "nodejs-lodash: ReDoS via the toNumber, trim and trimEnd functions"
+       },
+       "properties": {
+        "tags": [
+         "SCA"
+        ],
+        "security-severity": "5.1"
+       }
+      },
+      {
+       "id": "trivy/CVE-2023-45803",
+       "name": "CVE-2023-45803",
+       "shortDescription": {
+        "text": "urllib3: Request body not stripped after redirect from 303 status changes request method to GET"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-200"
+        ],
+        "security-severity": "4.7"
+       }
+      },
+      {
+       "id": "trivy/CVE-2026-27205",
+       "name": "CVE-2026-27205",
+       "shortDescription": {
+        "text": "flask: Flask: Information disclosure via improper caching of session data"
+       },
+       "properties": {
+        "tags": [
+         "SCA",
+         "CWE-524"
+        ],
+        "security-severity": "4.6"
+       }
+      },
+      {
+       "id": "semgrep/python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+       "name": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+       "shortDescription": {
+        "text": "Tainted sql string"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-704"
+        ],
+        "security-severity": "4.5"
+       }
+      },
+      {
+       "id": "semgrep/python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+       "name": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+       "shortDescription": {
+        "text": "Insecure hash algorithm md5"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-327"
+        ],
+        "security-severity": "4.5"
+       }
+      },
+      {
+       "id": "semgrep/python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+       "name": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+       "shortDescription": {
+        "text": "Avoid_app_run_with_bad_host"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-668"
+        ],
+        "security-severity": "4.5"
+       }
+      },
+      {
+       "id": "semgrep/python.flask.security.audit.debug-enabled.debug-enabled",
+       "name": "python.flask.security.audit.debug-enabled.debug-enabled",
+       "shortDescription": {
+        "text": "Debug enabled"
+       },
+       "properties": {
+        "tags": [
+         "SAST",
+         "CWE-489"
+        ],
+        "security-severity": "4.5"
+       }
+      }
+     ]
+    }
+   },
+   "results": [
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".claude/launch.json"
+        },
+        "region": {
+         "startLine": 16
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".claude/launch.json"
+        },
+        "region": {
+         "startLine": 17
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".claude/launch.json"
+        },
+        "region": {
+         "startLine": 18
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".env"
+        },
+        "region": {
+         "startLine": 3
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".env"
+        },
+        "region": {
+         "startLine": 4
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".env"
+        },
+        "region": {
+         "startLine": 5
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".env"
+        },
+        "region": {
+         "startLine": 6
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".env"
+        },
+        "region": {
+         "startLine": 7
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/checkpoints.sqlite-wal"
+        },
+        "region": {
+         "startLine": 9
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/checkpoints.sqlite-wal"
+        },
+        "region": {
+         "startLine": 10
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/scans/6a0ff560240e47359251461c2d400941/report.json"
+        },
+        "region": {
+         "startLine": 309
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/scans/6a0ff560240e47359251461c2d400941/report.json"
+        },
+        "region": {
+         "startLine": 9210
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/scans/6a0ff560240e47359251461c2d400941/report.json"
+        },
+        "region": {
+         "startLine": 9253
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/scans/81685b35d35847f5b2442f2f4a79aa0a/report.json"
+        },
+        "region": {
+         "startLine": 225
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/scans/81685b35d35847f5b2442f2f4a79aa0a/report.json"
+        },
+        "region": {
+         "startLine": 268
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/scans/81685b35d35847f5b2442f2f4a79aa0a/report.json"
+        },
+        "region": {
+         "startLine": 311
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/scans/81685b35d35847f5b2442f2f4a79aa0a/report.json"
+        },
+        "region": {
+         "startLine": 354
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/scans/81685b35d35847f5b2442f2f4a79aa0a/report.json"
+        },
+        "region": {
+         "startLine": 397
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "data/scans/da028b2284324e01a213767b471c349e/raw/pip-audit.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "security-report.json/securescan-report.json"
+        },
+        "region": {
+         "startLine": 225
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "security-report.json/securescan-report.json"
+        },
+        "region": {
+         "startLine": 268
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "security-report.json/securescan-report.json"
+        },
+        "region": {
+         "startLine": 311
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "security-report.json/securescan-report.json"
+        },
+        "region": {
+         "startLine": 354
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "security-report.json/securescan-report.json"
+        },
+        "region": {
+         "startLine": 397
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/aws-access-token",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (aws-access-token)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "tests/test_security.py"
+        },
+        "region": {
+         "startLine": 20
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "gitleaks/generic-api-key",
+     "level": "error",
+     "message": {
+      "text": "Hard-coded secret (generic-api-key)\nRecommendation: Remove the hard-coded secret, load it from an environment variable or secrets manager, then rotate/revoke the exposed credential and purge it from git history."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "tests/test_security.py"
+        },
+        "region": {
+         "startLine": 20
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2026-4800",
+     "level": "error",
+     "message": {
+      "text": "lodash: lodash: Arbitrary code execution via untrusted input in template imports\nRecommendation: Upgrade lodash from 4.17.15 to a fixed version (4.18.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2021-44906",
+     "level": "error",
+     "message": {
+      "text": "minimist: prototype pollution\nRecommendation: Upgrade minimist from 1.2.0 to a fixed version (1.2.6, 0.2.4) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2020-14343",
+     "level": "error",
+     "message": {
+      "text": "PyYAML: incomplete fix for CVE-2020-1747\nRecommendation: Upgrade pyyaml from 5.3 to a fixed version (5.4) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2020-1747",
+     "level": "error",
+     "message": {
+      "text": "PyYAML: arbitrary command execution through python/object/new when FullLoader is used\nRecommendation: Upgrade pyyaml from 5.3 to a fixed version (5.3.1) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2019-10906",
+     "level": "error",
+     "message": {
+      "text": "python-jinja2: str.format_map allows sandbox escape\nRecommendation: Upgrade jinja2 from 2.10 to a fixed version (2.10.1) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2025-66418",
+     "level": "error",
+     "message": {
+      "text": "urllib3: urllib3: Unbounded decompression chain leads to resource exhaustion\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (2.6.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2025-66471",
+     "level": "error",
+     "message": {
+      "text": "urllib3: urllib3 Streaming API improperly handles highly compressed data\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (2.6.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2026-97689",
+     "level": "error",
+     "message": {
+      "text": "urllib3: urllib3: Denial of Service via unbounded memory allocation in chunk parser\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (2.8.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2025-27516",
+     "level": "error",
+     "message": {
+      "text": "jinja2: Jinja sandbox breakout through attr filter selecting format method\nRecommendation: Upgrade jinja2 from 2.10 to a fixed version (3.1.6) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2025-13465",
+     "level": "error",
+     "message": {
+      "text": "lodash: prototype pollution in _.unset and _.omit functions\nRecommendation: Upgrade lodash from 4.17.15 to a fixed version (4.17.23) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2023-43804",
+     "level": "error",
+     "message": {
+      "text": "python-urllib3: Cookie request header isn't stripped during cross-origin redirects\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (2.0.6, 1.26.17) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2022-23540",
+     "level": "error",
+     "message": {
+      "text": "jsonwebtoken: Insecure default algorithm in jwt.verify() could lead to signature validation bypass\nRecommendation: Upgrade jsonwebtoken from 8.5.1 to a fixed version (9.0.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2020-8203",
+     "level": "error",
+     "message": {
+      "text": "nodejs-lodash: prototype pollution in zipObjectDeep function\nRecommendation: Upgrade lodash from 4.17.15 to a fixed version (4.17.19) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2024-56326",
+     "level": "error",
+     "message": {
+      "text": "jinja2: Jinja has a sandbox breakout through indirect reference to format method\nRecommendation: Upgrade jinja2 from 2.10 to a fixed version (3.1.5) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2022-23539",
+     "level": "error",
+     "message": {
+      "text": "jsonwebtoken: Unrestricted key type could lead to legacy keys usagen\nRecommendation: Upgrade jsonwebtoken from 8.5.1 to a fixed version (9.0.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2021-23337",
+     "level": "error",
+     "message": {
+      "text": "nodejs-lodash: command injection via template\nRecommendation: Upgrade lodash from 4.17.15 to a fixed version (4.17.21) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2018-1000656",
+     "level": "error",
+     "message": {
+      "text": "python-flask: Denial of Service via crafted JSON file\nRecommendation: Upgrade flask from 0.12.2 to a fixed version (0.12.3) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2019-1010083",
+     "level": "error",
+     "message": {
+      "text": "python-flask: unexpected memory usage can lead to denial of service via crafted encoded JSON data\nRecommendation: Upgrade flask from 0.12.2 to a fixed version (1.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2023-30861",
+     "level": "error",
+     "message": {
+      "text": "flask: Possible disclosure of permanent session cookie due to missing Vary: Cookie header\nRecommendation: Upgrade flask from 0.12.2 to a fixed version (2.3.2, 2.2.5) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2020-28493",
+     "level": "error",
+     "message": {
+      "text": "python-jinja2: ReDoS vulnerability in the urlize filter\nRecommendation: Upgrade jinja2 from 2.10 to a fixed version (2.11.3) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2018-18074",
+     "level": "error",
+     "message": {
+      "text": "python-requests: Redirect from HTTPS to HTTP does not remove Authorization header\nRecommendation: Upgrade requests from 2.19.0 to a fixed version (2.20.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2019-11324",
+     "level": "error",
+     "message": {
+      "text": "python-urllib3: Certification mishandle when error should be thrown\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (1.24.2) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2026-21441",
+     "level": "error",
+     "message": {
+      "text": "urllib3: urllib3 vulnerable to decompression-bomb safeguard bypass when following HTTP redirects (streaming API)\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (2.6.3) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/securescan.js-sql-string-concat",
+     "level": "error",
+     "message": {
+      "text": "Js sql string concat\nRecommendation: Use parameterized queries instead of building SQL strings from input."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 16
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/securescan.js-child-process-exec",
+     "level": "error",
+     "message": {
+      "text": "Js child process exec\nRecommendation: Never pass user input to a shell. Use an argument list without a shell."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 21
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/javascript.lang.security.audit.code-string-concat.code-string-concat",
+     "level": "error",
+     "message": {
+      "text": "Code string concat\nRecommendation: Remove eval on untrusted data; parse or compute with a safe evaluator."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 25
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/securescan.python-sql-string-concat",
+     "level": "error",
+     "message": {
+      "text": "Python sql string concat\nRecommendation: Use parameterized queries instead of building SQL strings from input."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/app.py"
+        },
+        "region": {
+         "startLine": 22
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/python.flask.security.injection.subprocess-injection.subprocess-injection",
+     "level": "error",
+     "message": {
+      "text": "Subprocess injection\nRecommendation: Never pass user input to a shell. Use an argument list without a shell."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/app.py"
+        },
+        "region": {
+         "startLine": 30
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/securescan.python-insecure-deserialization",
+     "level": "error",
+     "message": {
+      "text": "Python insecure deserialization\nRecommendation: Do not deserialize untrusted data with pickle/yaml.load/node-serialize. Use JSON or yaml.safe_load."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/app.py"
+        },
+        "region": {
+         "startLine": 37
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/securescan.python-insecure-deserialization",
+     "level": "error",
+     "message": {
+      "text": "Python insecure deserialization\nRecommendation: Do not deserialize untrusted data with pickle/yaml.load/node-serialize. Use JSON or yaml.safe_load."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/app.py"
+        },
+        "region": {
+         "startLine": 42
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/python.django.security.injection.code.user-eval.user-eval",
+     "level": "error",
+     "message": {
+      "text": "User eval\nRecommendation: Remove eval on untrusted data; parse or compute with a safe evaluator."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/app.py"
+        },
+        "region": {
+         "startLine": 47
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2024-22195",
+     "level": "error",
+     "message": {
+      "text": "jinja2: HTML attribute injection when passing user input as keys to xmlattr filter\nRecommendation: Upgrade jinja2 from 2.10 to a fixed version (3.1.3) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2026-2950",
+     "level": "error",
+     "message": {
+      "text": "lodash: Lodash: Prototype pollution allows deletion of built-in prototype properties via array path bypass\nRecommendation: Upgrade lodash from 4.17.15 to a fixed version (4.18.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2022-23541",
+     "level": "error",
+     "message": {
+      "text": "jsonwebtoken: Insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC\nRecommendation: Upgrade jsonwebtoken from 8.5.1 to a fixed version (9.0.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2026-44431",
+     "level": "error",
+     "message": {
+      "text": "urllib3: urllib3: Information disclosure via cross-origin redirects forwarding sensitive headers\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (2.7.0) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2019-11236",
+     "level": "error",
+     "message": {
+      "text": "python-urllib3: CRLF injection due to not encoding the '\\r\\n' sequence leading to possible attack on internal service\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (1.24.3) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2020-26137",
+     "level": "error",
+     "message": {
+      "text": "python-urllib3: CRLF injection via HTTP request method\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (1.25.9) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2024-37891",
+     "level": "error",
+     "message": {
+      "text": "urllib3: proxy-authorization request header is not stripped during cross-origin redirects\nRecommendation: Upgrade urllib3 from 1.24.1 to a fixed version (1.26.19, 2.2.2) and re-run tests."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+     "level": "error",
+     "message": {
+      "text": "Github actions mutable action tag\nRecommendation: Review the flagged code and apply the corresponding secure-coding policy control."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".github/workflows/secure-scan.yml"
+        },
+        "region": {
+         "startLine": 21
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+     "level": "error",
+     "message": {
+      "text": "Github actions mutable action tag\nRecommendation: Review the flagged code and apply the corresponding secure-coding policy control."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".github/workflows/secure-scan.yml"
+        },
+        "region": {
+         "startLine": 26
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+     "level": "error",
+     "message": {
+      "text": "Github actions mutable action tag\nRecommendation: Review the flagged code and apply the corresponding secure-coding policy control."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": ".github/workflows/secure-scan.yml"
+        },
+        "region": {
+         "startLine": 45
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/ajinabraham.njsscan.generic.hardcoded_secrets.node_secret",
+     "level": "error",
+     "message": {
+      "text": "Node_secret\nRecommendation: Review the flagged code and apply the corresponding secure-coding policy control."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 12
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/ajinabraham.njsscan.database.sql_injection.node_sqli_injection",
+     "level": "error",
+     "message": {
+      "text": "Node_sqli_injection\nRecommendation: Review the flagged code and apply the corresponding secure-coding policy control."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 16
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/ajinabraham.njsscan.exec.exec_os_command.generic_os_command_exec",
+     "level": "error",
+     "message": {
+      "text": "Generic_os_command_exec\nRecommendation: Review the flagged code and apply the corresponding secure-coding policy control."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 21
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/ajinabraham.njsscan.xss.xss_node.express_xss",
+     "level": "error",
+     "message": {
+      "text": "Express_xss\nRecommendation: Review the flagged code and apply the corresponding secure-coding policy control."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 25
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/ajinabraham.njsscan.eval.eval_node.eval_nodejs",
+     "level": "error",
+     "message": {
+      "text": "Eval_nodejs\nRecommendation: Review the flagged code and apply the corresponding secure-coding policy control."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 25
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/ajinabraham.njsscan.xss.xss_node.express_xss",
+     "level": "error",
+     "message": {
+      "text": "Express_xss\nRecommendation: Review the flagged code and apply the corresponding secure-coding policy control."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 29
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2024-34064",
+     "level": "warning",
+     "message": {
+      "text": "jinja2: accepts keys containing non-attribute characters"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/NSWG-ECO-516",
+     "level": "warning",
+     "message": {
+      "text": "Allocation of Resources Without Limits or Throttling"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2023-32681",
+     "level": "warning",
+     "message": {
+      "text": "python-requests: Unintended leak of Proxy-Authorization header"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2018-25091",
+     "level": "warning",
+     "message": {
+      "text": "urllib3: urllib3 does not remove the authorization HTTP header when following a cross-origin redirect"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2025-50181",
+     "level": "warning",
+     "message": {
+      "text": "urllib3: urllib3 redirects are not disabled when retries are disabled on PoolManager instantiation"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2020-7598",
+     "level": "warning",
+     "message": {
+      "text": "nodejs-minimist: prototype pollution allows adding or modifying properties of Object.prototype using a constructor or __proto__ payload"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2024-29041",
+     "level": "warning",
+     "message": {
+      "text": "express: cause malformed URLs to be evaluated"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2024-35195",
+     "level": "warning",
+     "message": {
+      "text": "requests: subsequent requests to the same host ignore cert verification"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2026-25645",
+     "level": "warning",
+     "message": {
+      "text": "requests: Requests: Security bypass due to predictable temporary file creation"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2024-43796",
+     "level": "warning",
+     "message": {
+      "text": "express: Improper Input Handling in Express Redirects"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2024-47081",
+     "level": "warning",
+     "message": {
+      "text": "requests: Requests vulnerable to .netrc credentials leak via malicious URLs"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+     "level": "warning",
+     "message": {
+      "text": "Direct response write"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 25
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/securescan.js-express-reflected-xss",
+     "level": "warning",
+     "message": {
+      "text": "Js express reflected xss"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/server.js"
+        },
+        "region": {
+         "startLine": 29
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2020-28500",
+     "level": "warning",
+     "message": {
+      "text": "nodejs-lodash: ReDoS via the toNumber, trim and trimEnd functions"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/node/package-lock.json"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2023-45803",
+     "level": "warning",
+     "message": {
+      "text": "urllib3: Request body not stripped after redirect from 303 status changes request method to GET"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "trivy/CVE-2026-27205",
+     "level": "warning",
+     "message": {
+      "text": "flask: Flask: Information disclosure via improper caching of session data"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/requirements.txt"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+     "level": "warning",
+     "message": {
+      "text": "Tainted sql string"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/app.py"
+        },
+        "region": {
+         "startLine": 22
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+     "level": "warning",
+     "message": {
+      "text": "Insecure hash algorithm md5"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/app.py"
+        },
+        "region": {
+         "startLine": 51
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+     "level": "warning",
+     "message": {
+      "text": "Avoid_app_run_with_bad_host"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/app.py"
+        },
+        "region": {
+         "startLine": 59
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ruleId": "semgrep/python.flask.security.audit.debug-enabled.debug-enabled",
+     "level": "warning",
+     "message": {
+      "text": "Debug enabled"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "samples/vulnerable-app/python/app.py"
+        },
+        "region": {
+         "startLine": 59
+        }
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
